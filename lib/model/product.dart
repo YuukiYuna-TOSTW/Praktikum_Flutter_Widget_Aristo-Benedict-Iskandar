@@ -38,7 +38,6 @@ class Product {
   final String? customImagePath;
 
   String get formattedPrice => "Rp "+price.toString().replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
-  
   String get assetName => customImagePath ?? '$id-0.jpg';
   String? get assetPackage => customImagePath != null ? null : 'shrine_images';
 

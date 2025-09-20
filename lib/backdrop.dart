@@ -137,7 +137,6 @@ class _BackdropState extends State<Backdrop>
               MaterialPageRoute(
                 builder: (BuildContext context) => const LoginPage()),
             );
-
           },
         ),
       ],
