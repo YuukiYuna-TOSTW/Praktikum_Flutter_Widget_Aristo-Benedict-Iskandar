@@ -36,23 +36,51 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 80.0),
             Column(
               children: <Widget>[
-                Image.asset('assets/diamond.png'),
-                const SizedBox(height: 16.0),
-                Text(
-                  'SHRINE',
-                  style: Theme.of(context).textTheme.headlineSmall,
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white, // Warna latar belakang
+                    borderRadius: BorderRadius.circular(8.0), // Radius untuk sudut melengkung
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black26, // Warna bayangan
+                        blurRadius: 4.0, // Radius blur bayangan
+                        offset: Offset(2, 2), // Posisi bayangan
+                      ),
+                    ],
+                  ),
+                  padding: const EdgeInsets.all(8.0), // Jarak antara gambar dan frame
+                  child: Image.asset('assets/WebsiteLogo.jpg'), // Gambar logo
                 ),
+                const SizedBox(height: 16.0),
+                Container(
+                  decoration: BoxDecoration(
+                  color: Colors.white, // Warna latar belakang
+                  borderRadius: BorderRadius.circular(8.0), // Radius untuk sudut melengkung
+                  boxShadow: [
+                  BoxShadow(
+                  color: Colors.black26, // Warna bayangan
+                  blurRadius: 4.0, // Radius blur bayangan
+                  offset: Offset(2, 2), // Posisi bayangan
+                ),
+    ],
+  ),
+  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0), // Jarak antara teks dan frame
+  child: Text(
+    'Game Star',
+    style: Theme.of(context).textTheme.headlineSmall,
+  ),
+),
               ],
             ),
             const SizedBox(height: 120.0),
-            // TODO: Remove filled: true values (103)
-            // TODO: Add TextField widgets (101)
-            // [Name]
-            // Remove filled: true values (103)
             TextField(
               controller: _usernameController,
               decoration: const InputDecoration(
-                // Removed filled: true
+                filled: true,
+                fillColor: Colors.white,
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                ),
                 labelText: 'Username',
               ),
             ),
@@ -60,7 +88,11 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _passwordController,
               decoration: const InputDecoration(
-                // Removed filled: true
+                filled: true,
+                fillColor: Colors.white, // Set background color
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none, // Remove border
+                ),
                 labelText: 'Password',
               ),
               obscureText: true,
@@ -69,17 +101,21 @@ class _LoginPageState extends State<LoginPage> {
             // TODO: Add button bar (101)
               OverflowBar(
                 alignment: MainAxisAlignment.end,
+                spacing: 8.0, // Add spacing between buttons
                 // TODO: Add a beveled rectangular border to CANCEL (103)
                 children: <Widget>[
 
-              TextButton(
+              ElevatedButton(
                 child: const Text('CANCEL'),
                 onPressed: () {
                   _usernameController.clear();
                   _passwordController.clear();
                 },
-                style: TextButton.styleFrom(
-                  foregroundColor: Theme.of(context).colorScheme.secondary, shape: const BeveledRectangleBorder(
+                style: ElevatedButton.styleFrom(
+                  elevation: 8.0,
+                  minimumSize: const Size(80, 36), // Ensure consistent size
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(7.0)),
                   ),
                 ),
@@ -92,6 +128,8 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 8.0,
+                  minimumSize: const Size(80, 36), // Ensure consistent size
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(7.0)),
                   ),

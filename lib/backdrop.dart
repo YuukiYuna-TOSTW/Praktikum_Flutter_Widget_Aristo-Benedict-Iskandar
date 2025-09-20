@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shrine/colors.dart';
 import 'package:shrine/login.dart';
 
 import 'model/product.dart';
@@ -221,7 +222,7 @@ class _BackdropTitle extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Animation<double> animation = _listenable;
+    final Animation<double> animation = _listenable;// Contoh warna
 
     return DefaultTextStyle(
       style: Theme.of(context).textTheme.titleLarge!,
@@ -237,14 +238,14 @@ class _BackdropTitle extends AnimatedWidget {
             icon: Stack(children: <Widget>[
               Opacity(
                 opacity: animation.value,
-                child: const ImageIcon(AssetImage('assets/slanted_menu.png')),
+                child: const ImageIcon(AssetImage('assets/slanted_menu.jpg')),
               ),
               FractionalTranslation(
                 translation: Tween<Offset>(
                   begin: Offset.zero,
                   end: const Offset(1.0, 0.0),
                 ).evaluate(animation),
-                child: const ImageIcon(AssetImage('assets/diamond.png')),
+                child: const ImageIcon(AssetImage('assets/WebsiteLogo.jpg')),
               )]),
           ),
         ),

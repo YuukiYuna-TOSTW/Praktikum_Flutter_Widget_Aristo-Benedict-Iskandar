@@ -13,10 +13,11 @@
 // limitations under the License.
 
 enum Category {
-  all,
-  accessories,
-  clothing,
-  home,
+  genshinimpact,
+  honkaiimpact,
+  honkaistarrail,
+  zenlesszonezero,
+  hoyoverse,
 }
 
 class Product {
@@ -26,16 +27,23 @@ class Product {
     required this.isFeatured,
     required this.name,
     required this.price,
+    this.customImagePath, // Path untuk gambar custom dari assets
   });
 
-  final Category category;
+  final category;
   final int id;
   final bool isFeatured;
   final String name;
   final int price;
+  final String? customImagePath; // Optional: path gambar custom
 
-  String get assetName => '$id-0.jpg';
-  String get assetPackage => 'shrine_images';
+  // Jika ada customImagePath, gunakan itu; jika tidak, gunakan default shrine_images
+  String get formattedPrice => "Rp "+price.toString().replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
+
+  String get assetName => customImagePath ?? '$id-0.jpg';
+  
+  // Jika customImagePath ada, tidak perlu package; jika tidak, gunakan shrine_images
+  String? get assetPackage => customImagePath != null ? null : 'shrine_images';
 
   @override
   String toString() => "$name (id=$id)";

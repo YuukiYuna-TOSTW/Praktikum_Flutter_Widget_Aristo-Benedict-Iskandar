@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shrine/backdrop.dart';
 
-import 'backdrop.dart';
 import 'category_menu_page.dart';
 import 'colors.dart';
 import 'home.dart';
 import 'login.dart';
 import 'model/product.dart';
-import 'supplemental/cut_corners_border.dart';
-
 import 'supplemental/cut_corners_border.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
@@ -20,7 +17,7 @@ class ShrineApp extends StatefulWidget {
 }
 
 class _ShrineAppState extends State<ShrineApp> {
-  Category _currentCategory = Category.all;
+  Category _currentCategory = Category.hoyoverse;
 
   void _onCategoryTap(Category category) {
     setState(() {
@@ -46,7 +43,7 @@ class _ShrineAppState extends State<ShrineApp> {
                 currentCategory: _currentCategory,
                 onCategoryTap: _onCategoryTap,
               ),
-              frontTitle: const Text('SHRINE'),
+              frontTitle: const Text('Game Star'),
               backTitle: const Text('MENU'),
             ),
         },
@@ -63,51 +60,29 @@ ThemeData _buildShrineTheme() {
   final ThemeData base = ThemeData.light();
   return base.copyWith(
     colorScheme: base.colorScheme.copyWith(
-      primary: kShrinePurple,
-      secondary: kShrinePurple,
-      error: kShrineErrorRed,
+      primary: kShrineBlack,
+      secondary: kShrineBlack,
+      error: kShrineBlack,
     ),
-    scaffoldBackgroundColor: kShrineSurfaceWhite,
+    scaffoldBackgroundColor: kShrineSurfaceSoftBlueGray,
     textSelectionTheme: const TextSelectionThemeData(
-      selectionColor: kShrinePurple,
+      selectionColor: kShrineBlack,
+    ),
+    appBarTheme: const AppBarTheme(
+      foregroundColor: kShrineBlack,
+      backgroundColor: kShrineBlueSky,
     ),
     inputDecorationTheme: const InputDecorationTheme(
       border: CutCornersBorder(),
       focusedBorder: CutCornersBorder(
         borderSide: BorderSide(
           width: 2.0,
-          color: kShrinePurple,
+          color: kShrineBlack,
         ),
       ),
       floatingLabelStyle: TextStyle(
-        color: kShrinePurple,
+        color: kShrineBlack,
       ),
     ),
   );
-}
-
-// TODO: Build a Shrine Theme (103)
-TextTheme _buildShrineTextTheme(TextTheme base) {
-  return base
-      .copyWith(
-        headlineSmall: base.headlineSmall!.copyWith(
-          fontWeight: FontWeight.w500,
-        ),
-        titleLarge: base.titleLarge!.copyWith(
-          fontSize: 18.0,
-        ),
-        bodySmall: base.bodySmall!.copyWith(
-          fontWeight: FontWeight.w400,
-          fontSize: 14.0,
-        ),
-        bodyLarge: base.bodyLarge!.copyWith(
-          fontWeight: FontWeight.w500,
-          fontSize: 16.0,
-        ),
-      )
-      .apply(
-        fontFamily: 'Rubik',
-        displayColor: kShrineBrown900,
-        bodyColor: kShrineBrown900,
-      );
 }
