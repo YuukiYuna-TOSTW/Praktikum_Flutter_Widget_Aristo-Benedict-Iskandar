@@ -18,7 +18,7 @@ class ShrineApp extends StatefulWidget {
 
 class _ShrineAppState extends State<ShrineApp> {
   Category _currentCategory = Category.hoyoverse;
-  
+
   void _onCategoryTap(Category category) {
     setState(() {
       _currentCategory = category;
@@ -39,7 +39,10 @@ class _ShrineAppState extends State<ShrineApp> {
                 currentCategory: _currentCategory,
                 onCategoryTap: _onCategoryTap,
               ),
-              frontTitle: const Text('Game Star'),
+              frontTitle: const Padding(
+                padding: EdgeInsets.only(left: 20.0),
+                child: Text('Game Star'),
+              ),
               backTitle: const Text('MENU'),
             ),
         },

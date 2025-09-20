@@ -218,7 +218,7 @@ class _BackdropTitle extends AnimatedWidget {
       child: Row(children: <Widget>[
 
         SizedBox(
-          width: 72.0,
+          width: 40,
           child: IconButton(
             padding: const EdgeInsets.only(right: 8.0),
             onPressed: onPress,
@@ -226,15 +226,19 @@ class _BackdropTitle extends AnimatedWidget {
 
               Opacity(
                 opacity: animation.value,
-                child: const ImageIcon(AssetImage('assets/slanted_menu.jpg')),
+                  child: const Image(
+                      image: AssetImage('assets/slanted_menu.jpg'),
+                      fit: BoxFit.contain),
               ),
 
               FractionalTranslation(
                 translation: Tween<Offset>(
                   begin: Offset.zero,
-                  end: const Offset(1.0, 0.0),
+                  end: const Offset(0.5, 0.0),
                 ).evaluate(animation),
-                child: const ImageIcon(AssetImage('assets/WebsiteLogo.jpg')),
+                  child: const Image(
+                      image: AssetImage('assets/WebsiteLogo.jpg'),
+                      fit: BoxFit.contain),
               )
 
             ]
