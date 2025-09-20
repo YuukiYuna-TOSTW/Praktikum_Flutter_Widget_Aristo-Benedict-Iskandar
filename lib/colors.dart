@@ -9,8 +9,8 @@ const kShrineBrown900 = Color(0xFF442B2D);
 
 const kShrineErrorRed = Color(0xFFC5032B);
 
-const kShrineSurfaceSoftBlueGray = const Color(0xFFA6C1D0);
-const kShrineBlack = const Color.fromARGB(255, 0, 0, 0);
-const kShrineBlueSky = const Color.fromARGB(255, 111, 210, 243);
+const kShrineSurfaceSoftBlueGray = Color(0xFFA6C1D0);
+const kShrineBlack = Color.fromARGB(255, 0, 0, 0);
+const kShrineBlueSky = Color.fromARGB(255, 111, 210, 243);
 
 const kShrinePurple = Color(0xFF5D1049);

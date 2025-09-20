@@ -22,7 +22,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // TODO: Add text editing controllers (101)
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -38,40 +37,42 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.white, // Warna latar belakang
-                    borderRadius: BorderRadius.circular(8.0), // Radius untuk sudut melengkung
-                    boxShadow: [
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0),
+                    boxShadow: const [
                       BoxShadow(
-                        color: Colors.black26, // Warna bayangan
-                        blurRadius: 4.0, // Radius blur bayangan
-                        offset: Offset(2, 2), // Posisi bayangan
+                        color: Colors.black26,
+                        blurRadius: 4.0,
+                        offset: Offset(2, 2),
                       ),
                     ],
                   ),
-                  padding: const EdgeInsets.all(8.0), // Jarak antara gambar dan frame
-                  child: Image.asset('assets/WebsiteLogo.jpg'), // Gambar logo
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset('assets/WebsiteLogo.jpg'),
                 ),
                 const SizedBox(height: 16.0),
                 Container(
                   decoration: BoxDecoration(
-                  color: Colors.white, // Warna latar belakang
-                  borderRadius: BorderRadius.circular(8.0), // Radius untuk sudut melengkung
-                  boxShadow: [
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8.0),
+                  boxShadow: const [
                   BoxShadow(
-                  color: Colors.black26, // Warna bayangan
-                  blurRadius: 4.0, // Radius blur bayangan
-                  offset: Offset(2, 2), // Posisi bayangan
+                  color: Colors.black26,
+                  blurRadius: 4.0,
+                  offset: Offset(2, 2),
+                  ),
+               ],
+              ),
+
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                  child: Text(
+                    'Game Star',
+                    style: Theme.of(context).textTheme.headlineSmall,
+                  ),
                 ),
-    ],
-  ),
-  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0), // Jarak antara teks dan frame
-  child: Text(
-    'Game Star',
-    style: Theme.of(context).textTheme.headlineSmall,
-  ),
-),
               ],
             ),
+
             const SizedBox(height: 120.0),
             TextField(
               controller: _usernameController,
@@ -84,25 +85,25 @@ class _LoginPageState extends State<LoginPage> {
                 labelText: 'Username',
               ),
             ),
+
             const SizedBox(height: 12.0),
             TextField(
               controller: _passwordController,
               decoration: const InputDecoration(
                 filled: true,
-                fillColor: Colors.white, // Set background color
+                fillColor: Colors.white,
                 border: OutlineInputBorder(
-                  borderSide: BorderSide.none, // Remove border
+                  borderSide: BorderSide.none,
                 ),
                 labelText: 'Password',
               ),
               obscureText: true,
             ),
 
-            // TODO: Add button bar (101)
+
               OverflowBar(
                 alignment: MainAxisAlignment.end,
-                spacing: 8.0, // Add spacing between buttons
-                // TODO: Add a beveled rectangular border to CANCEL (103)
+                spacing: 8.0, 
                 children: <Widget>[
 
               ElevatedButton(
@@ -113,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 8.0,
-                  minimumSize: const Size(80, 36), // Ensure consistent size
+                  minimumSize: const Size(80, 36),
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(7.0)),
@@ -128,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 8.0,
-                  minimumSize: const Size(80, 36), // Ensure consistent size
+                  minimumSize: const Size(80, 36),
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   shape: const BeveledRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(7.0)),

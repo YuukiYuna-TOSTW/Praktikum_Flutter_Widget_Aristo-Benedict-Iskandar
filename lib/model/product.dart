@@ -27,7 +27,7 @@ class Product {
     required this.isFeatured,
     required this.name,
     required this.price,
-    this.customImagePath, // Path untuk gambar custom dari assets
+    this.customImagePath,
   });
 
   final category;
@@ -35,14 +35,11 @@ class Product {
   final bool isFeatured;
   final String name;
   final int price;
-  final String? customImagePath; // Optional: path gambar custom
+  final String? customImagePath;
 
-  // Jika ada customImagePath, gunakan itu; jika tidak, gunakan default shrine_images
   String get formattedPrice => "Rp "+price.toString().replaceAllMapped(RegExp(r'(\d)(?=(\d{3})+(?!\d))'), (match) => '${match[1]}.');
-
-  String get assetName => customImagePath ?? '$id-0.jpg';
   
-  // Jika customImagePath ada, tidak perlu package; jika tidak, gunakan shrine_images
+  String get assetName => customImagePath ?? '$id-0.jpg';
   String? get assetPackage => customImagePath != null ? null : 'shrine_images';
 
   @override

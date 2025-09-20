@@ -3,7 +3,6 @@
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
-//
 // http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
@@ -37,7 +36,12 @@ class ProductCard extends StatelessWidget {
       fit: BoxFit.cover,
     );
 
-    return Column(
+    return Card(
+      shape: const BeveledRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(7.0)),
+      ),
+      elevation: 8.0,
+      child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
@@ -68,6 +72,7 @@ class ProductCard extends StatelessWidget {
           ),
         ),
       ],
+      ),
     );
   }
 }

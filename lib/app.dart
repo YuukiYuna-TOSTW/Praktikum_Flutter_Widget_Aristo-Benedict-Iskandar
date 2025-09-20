@@ -8,7 +8,7 @@ import 'login.dart';
 import 'model/product.dart';
 import 'supplemental/cut_corners_border.dart';
 
-// TODO: Convert ShrineApp to stateful widget (104)
+
 class ShrineApp extends StatefulWidget {
   const ShrineApp({Key? key}) : super(key: key);
 
@@ -18,7 +18,7 @@ class ShrineApp extends StatefulWidget {
 
 class _ShrineAppState extends State<ShrineApp> {
   Category _currentCategory = Category.hoyoverse;
-
+  
   void _onCategoryTap(Category category) {
     setState(() {
       _currentCategory = category;
@@ -32,13 +32,9 @@ class _ShrineAppState extends State<ShrineApp> {
       initialRoute: '/login',
       routes: {
         '/login': (BuildContext context) => const LoginPage(),
-        // TODO: Change to a Backdrop with a HomePage frontLayer (104)
         '/': (BuildContext context) => Backdrop(
-              // TODO: Make currentCategory field take _currentCategory (104)
               currentCategory: _currentCategory,
-              // TODO: Pass _currentCategory for frontLayer (104)
               frontLayer: HomePage(category: _currentCategory),
-              // TODO: Change backLayer field value to CategoryMenuPage (104)
               backLayer: CategoryMenuPage(
                 currentCategory: _currentCategory,
                 onCategoryTap: _onCategoryTap,
@@ -47,13 +43,12 @@ class _ShrineAppState extends State<ShrineApp> {
               backTitle: const Text('MENU'),
             ),
         },
-      // TODO: Add a theme (103)
-      theme: _kShrineTheme, // New code
+      theme: _kShrineTheme,
     );
   }
 }
 
-// TODO: Build a Shrine Theme (103)
+
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
 ThemeData _buildShrineTheme() {
@@ -64,14 +59,17 @@ ThemeData _buildShrineTheme() {
       secondary: kShrineBlack,
       error: kShrineBlack,
     ),
+
     scaffoldBackgroundColor: kShrineSurfaceSoftBlueGray,
     textSelectionTheme: const TextSelectionThemeData(
       selectionColor: kShrineBlack,
     ),
+
     appBarTheme: const AppBarTheme(
       foregroundColor: kShrineBlack,
       backgroundColor: kShrineBlueSky,
     ),
+
     inputDecorationTheme: const InputDecorationTheme(
       border: CutCornersBorder(),
       focusedBorder: CutCornersBorder(
@@ -80,6 +78,7 @@ ThemeData _buildShrineTheme() {
           color: kShrineBlack,
         ),
       ),
+
       floatingLabelStyle: TextStyle(
         color: kShrineBlack,
       ),

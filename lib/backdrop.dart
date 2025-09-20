@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shrine/colors.dart';
-import 'package:shrine/login.dart';
 
+import 'package:shrine/login.dart';
 import 'model/product.dart';
 
-// TODO: Add velocity constant (104)
 const double _kFlingVelocity = 2.0;
 
 class Backdrop extends StatefulWidget {
@@ -31,7 +29,6 @@ class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
 
-  // Animation controller
   late AnimationController _controller;
 
   @override
@@ -44,7 +41,6 @@ class _BackdropState extends State<Backdrop>
     );
   }
 
-  // TODO: Add override for didUpdateWidget() (104)
   @override
   void didUpdateWidget(Backdrop old) {
     super.didUpdateWidget(old);
@@ -62,7 +58,6 @@ class _BackdropState extends State<Backdrop>
     super.dispose();
   }
 
-  // fungsi untuk cek front layer
   bool get _frontLayerVisible {
     final AnimationStatus status = _controller.status;
     return status == AnimationStatus.completed ||
@@ -74,13 +69,11 @@ class _BackdropState extends State<Backdrop>
         velocity: _frontLayerVisible ? -_kFlingVelocity : _kFlingVelocity);
   }
 
-  // buildStack dengan context dan constraints
   Widget _buildStack(BuildContext context, BoxConstraints constraints) {
     const double layerTitleHeight = 48.0;
     final Size layerSize = constraints.biggest;
     final double layerTop = layerSize.height - layerTitleHeight;
 
-    // RelativeRectTween Animation
     Animation<RelativeRect> layerAnimation = RelativeRectTween(
       begin: RelativeRect.fromLTRB(
           0.0, layerTop, 0.0, layerTop - layerSize.height),
@@ -90,16 +83,14 @@ class _BackdropState extends State<Backdrop>
     return Stack(
       key: _backdropKey,
       children: <Widget>[
-        // backLayer dibungkus ExcludeSemantics
         ExcludeSemantics(
           child: widget.backLayer,
           excluding: _frontLayerVisible,
         ),
-        // frontLayer pakai PositionedTransition
+
           PositionedTransition(
             rect: layerAnimation,
             child: _FrontLayer(
-              // TODO: Implement onTap property on _BackdropState (104)
               onTap: _toggleBackdropLayerVisibility,
               child: widget.frontLayer,
             ),
@@ -113,8 +104,6 @@ class _BackdropState extends State<Backdrop>
     var appBar = AppBar(
       elevation: 0.0,
       titleSpacing: 0.0,
-      // TODO: Replace leading menu icon with IconButton (104)
-      // TODO: Create title with _BackdropTitle parameter (104)
       title: _BackdropTitle(
         listenable: _controller.view,
         onPress: _toggleBackdropLayerVisibility,
@@ -122,33 +111,33 @@ class _BackdropState extends State<Backdrop>
         backTitle: widget.backTitle,
       ),
       actions: <Widget>[
-        // TODO: Add shortcut to login screen from trailing icons (104)
+
         IconButton(
           icon: const Icon(
             Icons.search,
-            semanticLabel: 'login', // New code
+            semanticLabel: 'login',
           ),
           onPressed: () {
-            // TODO: Add open login (104)
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => LoginPage()),
+                builder: (BuildContext context) => const LoginPage()),
             );
           },
         ),
+
         IconButton(
           icon: const Icon(
             Icons.tune,
-            semanticLabel: 'login', // New code
+            semanticLabel: 'login',
           ),
           onPressed: () {
-            // TODO: Add open login (104)
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => LoginPage()),
+                builder: (BuildContext context) => const LoginPage()),
             );
+
           },
         ),
       ],
@@ -156,22 +145,20 @@ class _BackdropState extends State<Backdrop>
 
     return Scaffold(
       appBar: appBar,
-      // TODO: Return a LayoutBuilder widget (104)
       body: LayoutBuilder(builder: _buildStack),
     );
   }
 }
 
-// FrontLayer
 class _FrontLayer extends StatelessWidget {
-  // TODO: Add on-tap callback (104)
+
   const _FrontLayer({
     Key? key,
-    this.onTap, // New code
+    this.onTap,
     required this.child,
   }) : super(key: key);
 
-  final VoidCallback? onTap; // New code
+  final VoidCallback? onTap;
   final Widget child;
 
   @override
@@ -184,7 +171,7 @@ class _FrontLayer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          // TODO: Add a GestureDetector (104)
+
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
@@ -202,7 +189,7 @@ class _FrontLayer extends StatelessWidget {
   }
 }
 
-// TODO: Add _BackdropTitle class (104)
+
 class _BackdropTitle extends AnimatedWidget {
   final void Function() onPress;
   final Widget frontTitle;
@@ -222,35 +209,39 @@ class _BackdropTitle extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Animation<double> animation = _listenable;// Contoh warna
+    final Animation<double> animation = _listenable;
 
     return DefaultTextStyle(
       style: Theme.of(context).textTheme.titleLarge!,
       softWrap: false,
       overflow: TextOverflow.ellipsis,
       child: Row(children: <Widget>[
-        // branded icon
+
         SizedBox(
           width: 72.0,
           child: IconButton(
             padding: const EdgeInsets.only(right: 8.0),
-            onPressed: this.onPress,
+            onPressed: onPress,
             icon: Stack(children: <Widget>[
+
               Opacity(
                 opacity: animation.value,
                 child: const ImageIcon(AssetImage('assets/slanted_menu.jpg')),
               ),
+
               FractionalTranslation(
                 translation: Tween<Offset>(
                   begin: Offset.zero,
                   end: const Offset(1.0, 0.0),
                 ).evaluate(animation),
                 child: const ImageIcon(AssetImage('assets/WebsiteLogo.jpg')),
-              )]),
+              )
+
+            ]
+            ),
           ),
         ),
-        // Here, we do a custom cross fade between backTitle and frontTitle.
-        // This makes a smooth animation between the two texts.
+
         Stack(
           children: <Widget>[
             Opacity(
@@ -266,6 +257,7 @@ class _BackdropTitle extends AnimatedWidget {
                 child: backTitle,
               ),
             ),
+
             Opacity(
               opacity: CurvedAnimation(
                 parent: animation,
@@ -279,6 +271,7 @@ class _BackdropTitle extends AnimatedWidget {
                 child: frontTitle,
               ),
             ),
+
           ],
         )
       ]),
