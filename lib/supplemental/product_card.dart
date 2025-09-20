@@ -36,24 +36,29 @@ class ProductCard extends StatelessWidget {
       fit: BoxFit.cover,
     );
 
+    final roundedImageWidget = ClipRRect(
+      borderRadius: BorderRadius.circular(8.0),
+      child: imageWidget,
+    );
+
     return Card(
       shape: const BeveledRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(7.0)),
       ),
-      elevation: 8.0,
+      elevation: 4.0,
       child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         AspectRatio(
           aspectRatio: imageAspectRatio,
-          child: imageWidget,
+          child: roundedImageWidget,
         ),
         SizedBox(
           height: kTextBoxHeight * MediaQuery.textScalerOf(context).scale(1.0),
-          width: 121.0,
+          width: double.infinity,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
